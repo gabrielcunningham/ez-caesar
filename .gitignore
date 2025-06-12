@@ -1,0 +1,6 @@
+# Ignore IntelliJ
+.idea/
+
+# Ignore macOS
+*.DS_STORE
+
