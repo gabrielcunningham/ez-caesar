@@ -1,7 +1,6 @@
 public class Cipher {
 
-    static CharExtrema aToz = new CharExtrema('a', 'z');
-    static CharExtrema AToZ = new CharExtrema('A', 'Z');
+    public static CharExtrema aToz = new CharExtrema('a', 'z');
 
     /**
      * shiftCharacter handles shifting an individual character forwards or backwards while simultaneously handling edge
@@ -38,57 +37,24 @@ public class Cipher {
         return character;
     }
 
-    public static void main(String[] args) {
-
-        System.out.println(shiftCharacter('f', -5, aToz));
-
-    }
-
-}
-
-class CharExtrema {
-
-    public char minimum;
-    public char maximum;
-
     /**
-     * Constructor for a character extrema representation to establish the range of characters.
-     * @param min the minimum extremum for the range
-     * @param max the maximum extremum for the range
+     * shiftString handles shifting every single character in the string based on the provided information.
+     * @param string the string to shift
+     * @param offset how far each character needs to be shifted
+     * @param extrema the endpoints defining the range where each character shift loops around
+     * @return the shifted string
      */
-    CharExtrema(char min, char max) {
+    public static String shiftString(String string, int offset, CharExtrema extrema) {
 
-        // Anticipate if the maximum and minimum are in the wrong order, correct them
-        if (max < min) {
-            minimum = max;
-            maximum = min;
-            return;
+        StringBuilder shiftedString = new StringBuilder();
+
+        // For every character of the provided string, shift the character and add to the final string
+        for (char c : string.toLowerCase().toCharArray()) {
+            shiftedString.append(shiftCharacter(c, offset, extrema));
         }
 
-        minimum = min;
-        maximum = max;
+        return shiftedString.toString();
 
     }
-
-    /**
-     * rangeContains determines if a character is in a range between two extrema.
-     * @param character the character to check
-     * @return true or false whether the character is between the two extrema
-     */
-    public boolean rangeContains(char character) {
-
-        return minimum <= character && maximum >= character;
-
-    }
-
-    /**
-     * rangeSize calculates the size of the range, based to the two extrema.
-     * @return the size of the range
-     */
-    public int rangeSize() {
-
-        return (maximum - minimum) + 1;
-
-    }
-
+    
 }
