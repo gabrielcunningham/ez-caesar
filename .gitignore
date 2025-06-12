@@ -1,5 +1,7 @@
 # Ignore IntelliJ
 .idea/
+out/
+*.iml
 
 # Ignore macOS
 *.DS_STORE
