@@ -56,5 +56,5 @@ public class Cipher {
         return shiftedString.toString();
 
     }
-    
+
 }
